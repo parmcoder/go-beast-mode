@@ -38,3 +38,29 @@ real    0m4.371s
 ```
 
 We want the following binary to run as fast like the beast Euler one.
+
+Here is what it looks
+``` zsh
+go build -gcflags=-m main.go
+# command-line-arguments
+./main.go:18:6: can inline intPow
+./main.go:32:19: inlining call to intPow
+./main.go:34:20: inlining call to intPow
+./main.go:36:21: inlining call to intPow
+./main.go:38:22: inlining call to intPow
+./main.go:39:22: inlining call to intPow
+./main.go:58:36: inlining call to errors.New
+./main.go:63:18: inlining call to intPow
+./main.go:65:19: inlining call to intPow
+./main.go:67:20: inlining call to intPow
+./main.go:69:21: inlining call to intPow
+./main.go:71:22: inlining call to intPow
+./main.go:89:36: inlining call to errors.New
+./main.go:95:14: inlining call to fmt.Println
+./main.go:99:13: inlining call to fmt.Println
+./main.go:58:36: &errors.errorString{...} escapes to heap
+./main.go:89:36: &errors.errorString{...} escapes to heap
+./main.go:95:14: ... argument does not escape
+./main.go:99:13: ... argument does not escape
+./main.go:99:13: solution escapes to heap
+```

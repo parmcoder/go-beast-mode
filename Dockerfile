@@ -20,8 +20,6 @@ RUN apt-get install -y gccgo
 WORKDIR /go/app
 COPY . .
 
-RUN gccgo -c main.go
+RUN gccgo -O3 -o cool main.o
 
-RUN chmod +x main.o
-
-CMD ["./main.o"]
+CMD ["./cool"]

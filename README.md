@@ -65,12 +65,28 @@ go build -gcflags=-m main.go
 ./main.go:99:13: solution escapes to heap
 ```
 
-This is how far we can test on github codespace.
-
 Move to your local machine.
 We will try using the gccgo. Just follow this link https://go.dev/doc/install/gccgo#Prerequisites
 If anything went wrong, just
 ```
 cd gccgo
 ./contrib/download_prerequisites
+```
+
+It will only works in Linux, but not Mac(gccgo is not working on Darwin)
+Anyway, we can run this on cloud.
+
+```
+docker compose build
+docker run -it go-beast-mode_app bash
+```
+
+So far, we can try to benchmark it
+```
+root@9f22e07fa73d:/go/app# time ./cool
+{133 110 84 27 144}
+
+real    0m0.906s
+user    0m0.583s
+sys     0m0.028s
 ```

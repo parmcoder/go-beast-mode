@@ -64,3 +64,13 @@ go build -gcflags=-m main.go
 ./main.go:99:13: ... argument does not escape
 ./main.go:99:13: solution escapes to heap
 ```
+
+This is how far we can test on github codespace.
+
+Move to your local machine.
+We will try using the gccgo. Just follow this link https://go.dev/doc/install/gccgo#Prerequisites
+If anything went wrong, just
+```
+cd gccgo
+./contrib/download_prerequisites
+```

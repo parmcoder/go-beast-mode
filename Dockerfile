@@ -7,19 +7,14 @@ ARG DEBIAN_FRONTEND=noninteractive
 # Update Ubuntu Software repository
 RUN apt update
 
-# Install nginx, php-fpm and supervisord from ubuntu repository
-RUN apt install -y nginx php-fpm supervisor && \
-    rm -rf /var/lib/apt/lists/* && \
-    apt clean
-
 RUN apt-get update -y
 
 RUN apt-get install -y gccgo
 
-# Copy start.sh script and define default command for the container
 WORKDIR /go/app
+
 COPY . .
 
-RUN gccgo -O3 -o cool main.o
+RUN gccgo -O3 -o cool main.go
 
 CMD ["./cool"]

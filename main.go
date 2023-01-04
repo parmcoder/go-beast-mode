@@ -2,7 +2,8 @@ package main
 
 import (
 	"errors"
-	"fmt"
+
+	log "github.com/sirupsen/logrus"
 )
 
 const limA = 2000
@@ -55,7 +56,7 @@ func computeEuler() (EulerSolution, error) {
 		}
 	}
 
-	return EulerSolution{}, errors.New("Euler solution")
+	return EulerSolution{}, errors.New("euler solution")
 }
 
 func computeBeastEuler() (EulerSolution, error) {
@@ -86,15 +87,15 @@ func computeBeastEuler() (EulerSolution, error) {
 		}
 	}
 
-	return EulerSolution{}, errors.New("Euler solution")
+	return EulerSolution{}, errors.New("euler solution")
 }
 
 func main() {
 	solution, err := computeEuler()
 	if err != nil {
-		fmt.Println(err)
+		log.Info(err)
 		return
 	}
 
-	fmt.Println(solution)
+	log.Info(solution)
 }

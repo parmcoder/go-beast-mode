@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "embed"
 	"errors"
 
 	log "github.com/sirupsen/logrus"
@@ -90,6 +91,18 @@ func computeBeastEuler() (EulerSolution, error) {
 	return EulerSolution{}, errors.New("euler solution")
 }
 
+//go:embed hello.txt
+var s string
+
+//go:embed hello.txt
+var b []byte
+
+func testEmbed() {
+	log.Info(s)
+
+	log.Info(string(b))
+}
+
 func main() {
 	solution, err := computeEuler()
 	if err != nil {
@@ -98,4 +111,5 @@ func main() {
 	}
 
 	log.Info(solution)
+	testEmbed()
 }

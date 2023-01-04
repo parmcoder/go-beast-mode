@@ -1,6 +1,6 @@
 module go-beast-demo
 
-go 1.18
+go 1.17
 
 require github.com/sirupsen/logrus v1.9.0
 

@@ -1,5 +1,5 @@
 # Download base image ubuntu 20.04
-FROM ubuntu:20.04
+FROM golang:1.18.2
 
 # Disable Prompt During Packages Installation
 ARG DEBIAN_FRONTEND=noninteractive
@@ -15,6 +15,8 @@ WORKDIR /go/app
 
 COPY . .
 
-RUN gccgo -O3 -o cool main.go
+RUN go mod download
 
-CMD ["./cool"]
+RUN go build -compiler=gccgo -gccgoflags="-O3" -o server .
+
+CMD ["./server"]

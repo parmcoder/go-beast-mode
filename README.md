@@ -83,10 +83,21 @@ docker run -it go-beast-mode_app bash
 
 So far, we can try to benchmark it
 ```
-root@9f22e07fa73d:/go/app# time ./cool
-{133 110 84 27 144}
+root@41b455a23e1b:/go/app# time ./optimized 
+INFO[0000] {133 110 84 27 144}                          
+INFO[0000] hello world                                  
+INFO[0000] hello world                                  
 
-real    0m0.906s
-user    0m0.583s
-sys     0m0.028s
+real    0m0.585s
+user    0m0.571s
+sys     0m0.004s
+```
+
+Keep in mind that, sometimes it is not about the compiled program itself.
+But, the way you build your architecture created a bottleneck which required other approaches.
+
+# Docker tips
+If something went wrong, try
+```
+docker compose down --remove-orphans
 ```
